@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Laba_2_2 {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        boolean continueProgram = false;
+
+        do {
+            System.out.print("Введіть натуральне число n: ");
+            byte num1 = scan.nextByte();
+
+            if (num1 <= 0) {
+                System.out.println("Помилка: Введене число має бути більше нуля");
+                continue;
+            }
+
+            System.out.println("Введіть ціле число x: ");
+            byte num2 = scan.nextByte();
+
+            double totalSum = 0;
+
+            for (int i = 1; i <= num1; i++) {
+                for (int j = 1; j <= i; j++) {
+                    totalSum += (double) (i + j) / num2;
+
+                }
+            }
+            System.out.println("Сума: " + totalSum);
+
+            System.out.print("Продовжити роботу програми? (так/ні): ");
+            String answer = scan.next();
+            continueProgram = answer.equalsIgnoreCase("так");
+        } while (continueProgram);
+    }
+}
