@@ -1,0 +1,22 @@
+public class Laba_2_3 {
+    public static void main(String[] args) {
+        double a = -Math.PI / 2; // початок інтервалу
+        double b = -3 * Math.PI / 2; // кінець інтервалу
+        double dx = Math.PI / 10; // крок
+        double x = a; // ініціалізація аргумента
+
+        System.out.println("x\t|\ty");
+        System.out.println("----------------------");
+
+        while (x >= b) {
+            double y = calculateFunction(x); // обчислення значення функції для поточного x
+            System.out.printf("%.2f\t|\t%.2f%n", x, y);
+            x -= dx; // зменшення x на крок
+        }
+    }
+
+    // метод для обчислення значення функції для заданого x
+    public static double calculateFunction(double x) {
+        return Math.pow(x, 2) * Math.cos(x);
+    }
+}
