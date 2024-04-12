@@ -1,0 +1,82 @@
+import java.util.Scanner;
+
+public class Laba_2_1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean continueExecution = true;
+
+        while (continueExecution) {
+            System.out.print("Введіть ціле число x: ");
+            int x = scanner.nextInt();
+
+            System.out.print("Виберіть метод виконання (параметр/передумова/післяумова): ");
+            String methodType = scanner.next();
+
+            int result = 0;
+            switch (methodType) {
+                case "параметр":
+                    result = sumOfEvenNumbersGreaterThanXParam(x);
+                    break;
+                case "передумова":
+                    result = sumOfEvenNumbersGreaterThanXPre(x);
+                    break;
+                case "післяумова":
+                    result = sumOfEvenNumbersGreaterThanXPost(x);
+                    break;
+                default:
+                    System.out.println("Неправильний вибір методу виконання!");
+                    continue;
+            }
+
+            System.out.println("Сума всіх парних чисел у діапазоні [1;50], які є більшими за " + x + " дорівнює " + result);
+
+            System.out.println("Бажаєте продовжити роботу? (так/ні)");
+            String continueChoice = scanner.next();
+
+            if (continueChoice.equalsIgnoreCase("ні")) {
+                System.out.println("Дякую за користування програмою. До побачення! ");
+                continueExecution = false;
+            } else if (!continueChoice.equalsIgnoreCase("так")) {
+                System.out.println("Невірний вибір. Будь ласка, виберіть 'так' або 'ні' ");
+            }
+        }
+        scanner.close();
+    }
+
+    public static int sumOfEvenNumbersGreaterThanXParam(int x) {
+        int totalSum = 0;
+        for (int i = 2; i <= 50; i += 2) {
+            if (i > x) {
+                totalSum += i;
+            }
+        }
+        return totalSum;
+    }
+
+    public static int sumOfEvenNumbersGreaterThanXPre(int x) {
+        int totalSum = 0;
+        int i = 2;
+        while (i <= 50) {
+            if (i > x) {
+                totalSum += i;
+            }
+            i += 2;
+        }
+        return totalSum;
+    }
+
+    public static int sumOfEvenNumbersGreaterThanXPost(int x) {
+        int totalSum = 0;
+        int i = 1;
+        while (true) {
+            if (i > 50) {
+                break;
+            }
+            if (i % 2 == 0 && i > x) {
+                totalSum += i;
+            }
+            i++;
+        }
+        return totalSum;
+    }
+}
