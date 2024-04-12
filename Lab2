@@ -1,0 +1,33 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Laba_2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+
+            System.out.println("Введіть значення x: ");
+            int x = scanner.nextInt();
+            System.out.println("Введіть значення z: ");
+            int z = scanner.nextInt();
+
+
+            if (x <= 0 || z == 0 || (x * x - 14 * z) < 0) {
+                throw new ArithmeticException("Для заданих значень параметрів виникає недопустима операція.");
+            }
+
+            double log = Math.log(1 - 2 * x / (double) z + 3);
+
+            double y = Math.sqrt(log * 1 - 2 * x / (double) z + 3);
+
+            String formattedResult = String.format("%.2f", y);
+
+            System.out.println("Результат: " + formattedResult);
+        } catch (InputMismatchException e) {
+            System.out.println("Помилка: Введені значення повинні бути цілими числами.");
+        } catch (ArithmeticException e) {
+            System.out.println("Помилка: " + e.getMessage());
+        }
+    }
+}
