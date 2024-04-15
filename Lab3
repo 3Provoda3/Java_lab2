@@ -25,7 +25,8 @@ public class Laba_2_2 {
 
                 }
             }
-            System.out.println("Сума: " + totalSum);
+            String formattedResult = String.format("%.2f", totalSum);
+            System.out.println("Сума: " + formattedResult);
 
             System.out.print("Продовжити роботу програми? (так/ні): ");
             String answer = scan.next();
