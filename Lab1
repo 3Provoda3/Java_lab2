@@ -21,6 +21,10 @@ public class Laba_2 {
 
             double y = Math.sqrt(log * 1 - 2 * x / (double) z + 3);
 
+            if (Double.isNaN(y)) {
+                throw new ArithmeticException("Отримано недійсний результат. Перевірте введені значення.");
+            }
+
             String formattedResult = String.format("%.2f", y);
 
             System.out.println("Результат: " + formattedResult);
